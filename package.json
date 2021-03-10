@@ -1,0 +1,28 @@
+{
+  "name": "ytapi",
+  "version": "0.0.0",
+  "description": "Simple YouTube API wrapper writen in TypeScript",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hazmi35/node-ytapi.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "youtube",
+    "google",
+    "typescript",
+    "youtube-api",
+    "youtubeapi",
+    "youtubeapiv3",
+    "ytapi"
+  ],
+  "author": "Hazmi35",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hazmi35/node-ytapi/issues"
+  },
+  "homepage": "https://github.com/Hazmi35/node-ytapi#readme"
+}

@@ -1,0 +1,5 @@
+{
+    "eslint.packageManager": "npm",
+    "npm.packageManager": "npm",
+    "files.eol": "\n"
+}
