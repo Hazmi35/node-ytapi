@@ -2,12 +2,6 @@
   "name": "ytapi",
   "version": "0.0.0",
   "description": "Simple YouTube API wrapper writen in TypeScript",
-  "main": "dist/index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hazmi35/node-ytapi.git"
-  },
   "keywords": [
     "nodejs",
     "javascript",
@@ -19,10 +13,40 @@
     "youtubeapiv3",
     "ytapi"
   ],
-  "author": "Hazmi35",
-  "license": "MIT",
+  "homepage": "https://github.com/Hazmi35/node-ytapi#readme",
   "bugs": {
     "url": "https://github.com/Hazmi35/node-ytapi/issues"
   },
-  "homepage": "https://github.com/Hazmi35/node-ytapi#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hazmi35/node-ytapi.git"
+  },
+  "license": "MIT",
+  "author": "Hazmi35",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn run lint && yarn run compile",
+    "compile": "tsc --build tsconfig.json",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": "@hazmi35/eslint-config/typescript"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@hazmi35/eslint-config": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "eslint": "^7.21.0",
+    "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": ">=12.x"
+  }
 }
