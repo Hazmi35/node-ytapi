@@ -37,10 +37,13 @@
     "extends": "@hazmi35/eslint-config/typescript"
   },
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@hazmi35/eslint-config": "^3.6.0",
+    "@types/node": "^14.14.33",
+    "@types/node-fetch": "^2.5.8",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "eslint": "^7.21.0",
