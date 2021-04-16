@@ -1,4 +1,5 @@
 import { Etag, responseKinds } from ".";
+import { Resource } from "./Resource";
 
 export interface Response {
     kind: responseKinds;
@@ -9,6 +10,5 @@ export interface Response {
         totalResults: number;
         resultsPerPage: number;
     };
-    // TODO: Create typings for raw resource
     items: Resource[];
 }
