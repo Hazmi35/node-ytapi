@@ -1,6 +1,8 @@
 import { YouTube } from "..";
 import fetch from "node-fetch";
-import { Response } from "../typings/raw";
+import { Resource, Response } from "../typings/raw";
+import { ResourceKind } from "../typings";
+import { Parts, Endpoints } from "./Constants";
 
 export class Request {
     public readonly baseURL = "https://www.googleapis.com/youtube/v3/";
@@ -16,5 +18,20 @@ export class Request {
                 return res;
             })
             .catch(e => Promise.reject(e));
+    }
+
+    public getResource(type: ResourceKind, qs: Record<string, string> = {}): Promise<Resource | undefined> {
+        const search = new URLSearchParams(Object.assign({ part: Parts[type] }, qs));
+        return this.make(Endpoints[type], Object.fromEntries(search))
+            .then(result => {
+                if (result?.items && result.items.length !== 0) return result.items[0];
+
+                throw new Error(`Could not find any resource in ${result!.kind}`);
+            })
+            .catch(e => Promise.reject(e));
+    }
+
+    public getResourceByID(type: ResourceKind, id: string): Promise<Resource | undefined> {
+        return this.getResource(type, { id });
     }
 }

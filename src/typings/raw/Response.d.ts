@@ -1,8 +1,8 @@
-import { Etag, ResponseKinds } from ".";
+import { Etag, ResponseKind } from ".";
 import { Resource } from "./Resource";
 
 export interface Response {
-    kind: ResponseKinds;
+    kind: ResponseKind;
     etag: Etag;
     nextPageToken?: string;
     prevPageToken?: string;
@@ -10,5 +10,5 @@ export interface Response {
         totalResults: number;
         resultsPerPage: number;
     };
-    items: Resource[];
+    items?: Resource[];
 }

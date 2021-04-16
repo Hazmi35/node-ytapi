@@ -1,7 +1,7 @@
-import { ResourceKinds, SearchItemID } from ".";
+import { ResourceKind, SearchItemID } from ".";
 
 export interface Resource {
-    kind: ResourceKinds;
+    kind: ResourceKind;
     etag: Etag;
     id: string | SearchItemID;
     snippet: any[];
