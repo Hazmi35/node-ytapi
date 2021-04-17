@@ -1,7 +1,7 @@
 export enum Parts {
     playlistItems = "",
     channel = "contentDetails,snippet,statistics,status",
-    video = "",
+    video = "contentDetails,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails",
     playlist = "",
     search = ""
 }
