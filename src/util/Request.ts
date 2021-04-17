@@ -16,8 +16,7 @@ export class Request {
             .then(res => {
                 if (res.error) return Promise.reject(res.error);
                 return res;
-            })
-            .catch(e => Promise.reject(e));
+            });
     }
 
     public getResource(type: ResourceKind, qs: Record<string, string> = {}): Promise<Resource | undefined> {
@@ -26,12 +25,34 @@ export class Request {
             .then(result => {
                 if (result?.items && result.items.length !== 0) return result.items[0];
 
-                throw new Error(`Could not find any resource in ${result!.kind}`);
-            })
-            .catch(e => Promise.reject(e));
+                return Promise.reject(new Error(`Could not find any resource in ${result!.kind}`));
+            });
     }
 
     public getResourceByID(type: ResourceKind, id: string): Promise<Resource | undefined> {
         return this.getResource(type, { id });
+    }
+
+    public getResources(type: ResourceKind, qs: Record<string, string> = {}, count = Infinity, fetched: Resource[] = [], pageToken = ""): Promise<Resource[] | undefined> {
+        if (count < 1) return Promise.reject(new Error("Cannot fetch less than 1."));
+
+        const limit = count > 50 ? 50 : count;
+        const search = new URLSearchParams(Object.assign({ part: Parts[type], pageToken, maxResults: limit }, qs));
+
+        return this.make(Endpoints[type], Object.fromEntries(search))
+            .then(result => {
+                if (result?.items && result.items.length !== 0) {
+                    const results = fetched.concat(result.items);
+
+                    if (result.nextPageToken && limit !== count) return this.getResources(type, qs, count - limit, results, result.nextPageToken);
+                    return results;
+                }
+
+                return Promise.reject(new Error(`Could not find any resource in ${result!.kind}`));
+            });
+    }
+
+    public getResourcesByID(type: ResourceKind, ids: string[], count = Infinity): Promise<Resource[] | undefined> {
+        return this.getResources(type, { id: ids.join(",") }, count);
     }
 }
