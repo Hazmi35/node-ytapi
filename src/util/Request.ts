@@ -25,7 +25,7 @@ export class Request {
             .then(result => {
                 if (result?.items && result.items.length !== 0) return result.items[0];
 
-                return Promise.reject(Error(`Could not find any resource in ${result!.kind}`));
+                return Promise.reject(new Error(`Could not find any resource in ${result!.kind}`));
             });
     }
 
@@ -48,7 +48,7 @@ export class Request {
                     return results;
                 }
 
-                return Promise.reject(Error(`Could not find any resource in ${result!.kind}`));
+                return Promise.reject(new Error(`Could not find any resource in ${result!.kind}`));
             });
     }
 
