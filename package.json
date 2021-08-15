@@ -41,7 +41,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@hazmi35/eslint-config": "^4.0.0",
+    "@hazmi35/eslint-config": "^4.1.1",
     "@types/node": "^16.4.12",
     "@types/node-fetch": "^2.5.12",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
